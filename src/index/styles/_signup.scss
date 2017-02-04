@@ -1,0 +1,54 @@
+.personal-signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0 20px;
+
+  .mdl-card {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+  }
+
+  .mdl-card__title {
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .arrow-back {
+      position: absolute;
+      left: 8px;
+      cursor: pointer;
+      .material-icons {
+        font-size: 30px;
+      }
+    }
+  }
+
+  .mdl-card__supporting-text {}
+
+  .signup-submit {
+    margin-bottom: 20px;
+    padding: 0 16px;
+
+    a {
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  .mdl-card__actions {
+    text-align: center;
+
+    .back-to-login {
+      cursor: pointer;
+    }
+  }
+}
+@media (max-width: 320px) {
+  .personal-signup-container {
+    padding: 0;
+
+    .mdl-card {
+      box-shadow: none;
+    }
+  }
+}

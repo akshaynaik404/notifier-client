@@ -1,0 +1,52 @@
+.inbox-container {
+  .message-list {
+    margin: 0px;
+    .message {
+      margin: 0 auto;
+      margin-bottom: 10px;
+      .mdl-card__title {
+        display: block;
+        font-weight: normal;
+        padding-bottom: 4px;
+        .from {
+          font-size: .8em;
+          padding-bottom: 4px;
+          .org {
+            margin-right: 5px;
+          }
+          .personal {
+            margin-left: 5px;
+          }
+        }
+        .subject {
+          padding-top: 4px;
+          font-size: 1.2em;
+        }
+      }
+    }
+    .message:last-child {
+      margin-bottom: 0;
+    }
+    .mdl-card__actions {
+      text-align: right;
+      position: absolute;
+      bottom: 0;
+    }
+    .mdl-card__supporting-text {
+      padding: 4px 16px;
+    }
+    .spinner-container {
+      text-align: center;
+    }
+  }
+}
+@media (max-width: 320px) {
+  .message {
+    // border: 1px solid red;
+    box-shadow: none;
+    padding: 0;
+    width: 100vw;
+
+    border-bottom: 1px dotted #999;
+  }
+}

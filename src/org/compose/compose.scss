@@ -1,0 +1,85 @@
+.compose-box {
+  width: 50vw;
+  padding: 0;
+
+  .compose-box-title {
+    display: flex;
+    justify-content: center;
+  }
+
+  .message,
+  .subject {
+    width: 100%;
+  }
+
+  .select-recipient {
+    width: 100%;
+  }
+
+  .compose-error {
+    text-align: center;
+    color: red;
+    margin-top: 8px;
+    display: none;
+  }
+
+  .mdl-dialog__content {
+    padding: 0 16px;
+  }
+
+  .spinner {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+  }
+
+  #close {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .mdl-dialog__actions {
+    padding: 0 0 16px;
+
+    .btn-send {
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  .recipients-list {
+    display: none;
+    margin: 0;
+
+    .group-containe {
+      display: block;
+      padding: 0 16px;
+
+      .group-name {
+        padding: 0;
+
+        .mdl-list__item-primary-content {
+          cursor: pointer;
+        }
+      }
+
+      .mdl-list {
+        display: none;
+
+        li {
+          margin-left: 16px;
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 425px) {
+  .compose-box {
+    width: 100vw;
+    min-height: 100vh;
+    height: auto;
+  }
+}

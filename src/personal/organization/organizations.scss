@@ -1,0 +1,18 @@
+.organizations-container {
+  .create-new-organization {
+    text-align: center;
+    padding: 8px 0;
+  }
+  .org-list {
+    margin: 0;
+    // text-align: center;
+    .org {
+      // text-align: center;
+      cursor: pointer;
+    }
+    i {
+      color: #999;
+      background: #fff;
+    }
+  }
+}

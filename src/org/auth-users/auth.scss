@@ -1,0 +1,13 @@
+.authorized-container {
+  // border: 1px solid red;
+  button.authorize-user-btn {
+    display: block;
+    margin: 8px auto;
+  }
+
+  #close {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}

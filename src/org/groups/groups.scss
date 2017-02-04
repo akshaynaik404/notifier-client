@@ -1,0 +1,57 @@
+.groups-container {
+  .message-list {
+    padding: 0;
+    margin: 0;
+
+    > .message {
+      display: block;
+      padding: 0;
+
+      .subject-wrapper {
+        // padding-bottom: 0;
+        height: auto;
+      }
+
+      .message-text {
+        padding-top: 8px;
+        // display: none;
+      }
+    }
+  }
+}
+// specific to groups-container
+
+.groups-container {
+  // spinner
+  .spinner-wrapper {
+    display: none;
+    text-align: center;
+  }
+
+  button#close {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  button {
+    display: block;
+    margin: 8px auto;
+  }
+
+  .mdl-list__item {
+    .mdl-list {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .message {
+    .message-text {
+      .mdl-list__item-secondary-action {
+        position: absolute;
+        right: 16px;
+      }
+    }
+  }
+}
