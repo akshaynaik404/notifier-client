@@ -7,7 +7,7 @@ import './connections.scss';
 // } from '../api/api';
 import {
 	getGroupTmplStr
-} from '../templates/groups';
+} from './connections-template';
 
 // let groups = api.getGroups();
 // console.log(groups);

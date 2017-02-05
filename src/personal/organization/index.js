@@ -7,7 +7,7 @@ import './organizations.scss';
 // } from '../api/api';
 import {
 	getOrgsTmplStr
-} from '../templates/orgs';
+} from './organizations-template';
 // let organizations = api.getOrganizations();
 // console.log('load-orgs.js loaded');
 

@@ -7,7 +7,7 @@ import './inbox.scss';
 // } from '../api/api';
 import {
 	getRecievedMailsStr
-} from '../templates/recievedMails';
+} from './mails-template';
 
 // console.log('inbox.js loaded');
 // let recievedMails = api.getRecievedMails();
