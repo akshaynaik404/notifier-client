@@ -2,7 +2,14 @@ import './app/layout.js';
 
 // import './remember';
 import './lib/material.min.js';
-import './inbox/';
-import './connections/';
+import {
+	addMsgs
+} from './inbox/';
+import {
+	addConnection,
+	removeConnection
+} from './connections/';
 import './change-password/';
-import './organization/';
+import {
+	addOrg
+} from './organization/';

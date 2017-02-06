@@ -12,7 +12,19 @@ import {
 // console.log('inbox.js loaded');
 // let recievedMails = api.getRecievedMails();
 
+let msgs = [];
+let $msgList = $('.inbox-container .message-list');
 
+_render();
+
+export function addMsg(msg) {
+	msgs.push(msg);
+	_render();
+}
+
+function _render() {
+	$msgList.html(getRecievedMailsStr(msgs));
+}
 
 // load inbox
 $.ajax({
@@ -22,13 +34,15 @@ $.ajax({
 	},
 	type: 'POST'
 }).done(function (recievedMails) {
-	// console.log(recievedMails);
+	console.log(recievedMails);
 	try {
 		recievedMails = JSON.parse(recievedMails);
+		recievedMails.forEach(function (mail) {
+			addMsg(mail);
+		});
 	} catch (e) {
 		console.log('Parse error');
 	}
-	$('.inbox-container .message-list').append(getRecievedMailsStr(recievedMails));
 });
 
 
@@ -50,7 +64,11 @@ $('body').on('click', '.inbox-container .message button.delete', function () {
 		}).done(function (data) {
 			data = $.trim(data);
 			if (data === '1') {
-				$clickedBtn.parents('.message').remove();
+				msgs.forEach(function (msg) {
+					if (msg.id === msgId) {
+						$clickedBtn.parents('.message').remove();
+					}
+				});
 			} else if (data === '0') {
 				console.log('db error');
 			} else {

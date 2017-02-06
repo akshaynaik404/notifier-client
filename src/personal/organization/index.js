@@ -10,8 +10,27 @@ import {
 } from './organizations-template';
 // let organizations = api.getOrganizations();
 // console.log('load-orgs.js loaded');
-
 // load organizations
+
+let orgs = [];
+let $orgList = $('.organizations-container .org-list');
+_render();
+
+// function _removeOrg(org) {
+// 	let orgIndex = orgs.indexOf(org);
+// 	if (orgIndex != -1) {
+// 		return orgs.splice(orgIndex, 1)
+// 	}
+// }
+
+export function addOrg(org) {
+	orgs.push(org);
+	_render();
+}
+
+function _render() {
+	$orgList.html(getOrgsTmplStr(orgs, 'Admin'));
+}
 $.ajax({
 	url: '/server/personal_home.php',
 	data: {
@@ -22,10 +41,12 @@ $.ajax({
 	// console.log(orgs);
 	try {
 		orgs = JSON.parse(orgs);
+		orgs.forEach(function (org) {
+			addOrg(org);
+		})
 	} catch (e) {
 		console.log('Parse error');
 	}
-	$('.organizations-container .org-list').append(getOrgsTmplStr(orgs, 'Admin'));
 });
 $.ajax({
 	url: '/server/personal_home.php',
