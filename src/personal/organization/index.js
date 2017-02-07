@@ -64,3 +64,39 @@ $.ajax({
 	$('.organizations-container .org-list').append(getOrgsTmplStr(orgs,
 		'Auth-access'));
 });
+
+$('.organizations-container .org-list').on('click', '.org-notifier-id',
+	function (e) {
+		let orgNotifierId = this.innerHTML;
+		let accessType = $(this).siblings('span')[0].innerHTML;
+		if (accessType === 'Admin') {
+			console.log('Admin org');
+			$.ajax({
+				url: '/server/org_auth_access.php',
+				data: {
+					is_admin_access: orgNotifierId
+				},
+				type: 'POST'
+			}).done(function (res) {
+				if ($.trim(res) === '1') {
+					location.href = './org.php';
+				}
+			});
+		} else if (accessType === 'Auth-access') {
+			console.log('auth org');
+			$.ajax({
+				url: '/server/org_auth_access.php',
+				data: {
+					is_auth_access: orgNotifierId
+				},
+				type: 'POST'
+			}).done(function (res) {
+				console.log(res);
+				if ($.trim(res) === '1') {
+					location.href = './org.php';
+				}
+			});
+		} else {
+			console.log('error');
+		}
+	});
