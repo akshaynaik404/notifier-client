@@ -23,6 +23,9 @@
 
 .groups-container {
   // spinner
+  .groups-list .group-name {
+    cursor: pointer;
+  }
   .spinner-wrapper {
     display: none;
     text-align: center;

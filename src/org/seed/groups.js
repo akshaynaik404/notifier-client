@@ -1,6 +1,8 @@
 let groups = {
-	'BE': [ 'user1', 'user2', 'user3' ],
-	'TE': [ '2user1', '2user2', '2user3' ]
+	'BE': {
+		members: ['user1', 'user2', 'user3'],
+		link: 'http://akshaynaik.me'
+	}
 };
 
 export {

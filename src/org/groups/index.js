@@ -12,7 +12,7 @@ export let groups = {
 	load: loadGroups
 }
 
-// load groups and compose recipients
+// load groups
 $.ajax({
 	url: '/server/org_home.php',
 	data: {
@@ -31,7 +31,7 @@ $.ajax({
 		let $groupsList = $groupsContainer.find(".groups-list");
 
 		// load group members list inside .group-overlay-container
-		$groupsList.on('click', '.group', loadGroupOverlayContainer);
+		$groupsList.on('click', '.group .group-name', loadGroupOverlayContainer);
 		/**
 		 * Show group members of the selected group inside .group-overlay-container
 		 */
@@ -41,11 +41,12 @@ $.ajax({
 			$grpMembers.html("");
 
 			let groupName = $(this)
+				.parents('.group')
 				.attr('data-group-name');
 
 			if (data && Object.keys(data)
 				.length > 0) {
-				let groupMembers = data[groupName];
+				let groupMembers = data[groupName].members;
 				if (groupMembers && groupMembers.length > 0) {
 					groupMembers.forEach(function (member) {
 						// create markup from template and append to .members

@@ -16,11 +16,10 @@ $.ajax({
 		load_groups: ''
 	},
 	type: 'POST'
-}).done(function (data) {
-	// console.log(data);
+}).done(function (groups) {
 	try {
-		data = JSON.parse(data);
-		compose.loadRecipients(data);
+		groups = JSON.parse(groups);
+		compose.loadRecipients(groups);
 	} catch (e) {
 		console.log('Parse error');
 	}

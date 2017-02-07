@@ -5,7 +5,7 @@ import {
 function getRecipientsTmplStr(groups) {
 	let recipientsStr = '';
 	for (let groupName in groups) {
-		let recipients = groups[groupName];
+		let recipients = groups[groupName].members;
 		let membersStr = '';
 		recipients.forEach(function (recipient) {
 			membersStr = membersStr + getRecipientTmplStr(recipient, groupName);

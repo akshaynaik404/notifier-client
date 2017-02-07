@@ -2,10 +2,11 @@ import {
 	getGroupTmplStr
 } from './group-template';
 
-function getGroupsTmplStr( groups ) {
+function getGroupsTmplStr(groups) {
 	let groupsStr = '';
-	for ( let group in groups ) {
-		groupsStr = groupsStr + getGroupTmplStr( group );
+	for (let groupName in groups) {
+		let groupLink = groups[groupName].link;
+		groupsStr = groupsStr + getGroupTmplStr(groupName, groupLink);
 	}
 	return groupsStr;
 }
