@@ -7,6 +7,11 @@ import {
 	getSentMsgTmplStr
 } from '../compose/sentMsg';
 
+// addMsg function form sent component
+import {
+	addMsg
+} from '../sent/';
+
 $(".select-recipient")
 	.click(function (e) {
 		e.preventDefault();
@@ -72,7 +77,7 @@ $composeBox.find(".btn-send")
 			});
 			recipientsList = recipientsList.slice(0, -1);
 
-			// load auth access
+			// send message
 			$.ajax({
 				url: '/server/message.php',
 				data: {
@@ -83,18 +88,16 @@ $composeBox.find(".btn-send")
 				type: 'POST'
 			}).done(function (data) {
 				let msgObj;
-				console.log(data);
 				try {
 					msgObj = JSON.parse(data);
+					msgObj['to'] = $recipients.length;
+					msgObj['subject'] = subject;
+					msgObj['body'] = message;
+					$clickedBtn.disabled = false;
+					addMsg(msgObj);
 				} catch (e) {
 					console.log('Parse Error');
 				}
-				msgObj['to'] = $recipients.length;
-				msgObj['subject'] = subject;
-				msgObj['body'] = message;
-				$clickedBtn.disabled = false;
-				$('.sent-container .message-list')
-					.append(getSentMsgTmplStr(msgObj));
 			});
 
 		} else {

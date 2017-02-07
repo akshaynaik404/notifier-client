@@ -1,6 +1,6 @@
 import './app/layout';
 
-import './app/load';
+// import './app/load';
 
 import './compose/compose';
 import './sent/sent';
@@ -10,18 +10,18 @@ import './groups/groups';
 // 	api
 // } from './api/api';
 
-// import {
-// 	groups
-// } from './groups';
-// import {
-// 	sent
-// } from './sent';
-// import {
-// 	compose
-// } from './compose';
-// import {
-// 	authUsers
-// } from './auth-users';
+import {
+	groups
+} from './groups';
+import {
+	sent
+} from './sent';
+import {
+	compose
+} from './compose';
+import {
+	authUsers
+} from './auth-users';
 
 // groups.load(api.getGroups());
 // sent.load(api.getSentMessages());

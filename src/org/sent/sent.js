@@ -4,10 +4,6 @@ import {
 	api
 } from '../api/api';
 
-import {
-	getMsgOverlayTmplStr
-} from '../sent/msgOverlay';
-
 
 $('body').on('click', '.message-overlay-container .back-to-sent', function () {
 	$('.message-overlay-container').hide();
