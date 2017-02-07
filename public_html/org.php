@@ -37,7 +37,7 @@
             <a class="link-sent mdl-navigation__link ">Sent</a>
             <a class="link-groups mdl-navigation__link ">Groups</a>
             <a class="link-authorized mdl-navigation__link ">Authorized Users</a>
-            <a class="link-logout mdl-navigation__link " href="/logout">Logout</a>
+            <a class="logout-btn mdl-navigation__link">Logout</a>
           </nav>
         </div>
         <main class="mdl-layout__content">

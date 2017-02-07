@@ -1,6 +1,6 @@
 import './app/layout';
 
-// import './app/load';
+import './app/logout';
 
 import './compose/compose';
 import './sent/sent';

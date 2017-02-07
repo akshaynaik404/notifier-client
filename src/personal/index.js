@@ -13,3 +13,4 @@ import './change-password/';
 import {
 	addOrg
 } from './organization/';
+import './app/logout';
