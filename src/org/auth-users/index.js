@@ -38,3 +38,14 @@ $.ajax({
 		console.log('Parse error');
 	}
 });
+
+$.ajax({
+	url: '/server/org_home.php',
+	data: {
+		get_auth_link: ''
+	},
+	type: 'POST'
+}).done(function (link) {
+	link = $.trim(link);
+	$('.auth-link').html(`http://notifier.esy.es/auth.php?org=${link}`);
+});

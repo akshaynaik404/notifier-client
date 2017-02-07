@@ -21,8 +21,6 @@
     <meta name="msapplication-TileColor" content="#3372DF">
 
     <link rel="shortcut icon" href="images/favicon.png">
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
 
   </head>
 
@@ -135,25 +133,25 @@
             </div>
             <div class="authorized-container">
               <button class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent authorize-user-btn">
-                <i class="material-icons">add</i>
+                Add
               </button>
               <ul class="mdl-list auth-list">
               </ul>
               <dialog id="authorize-user-dialog" class="mdl-dialog authorize-user">
 
-                <h1 class="mdl-dialog__title compose-box-title">Add User</h1>
+                <h1 class="mdl-dialog__title compose-box-title">
+                  Share this link
+                </h1>
                 <div class="mdl-dialog__content" id="dialog-content">
                   <!-- Floating Multiline Textfield -->
                   <div class="error"></div>
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="add-auth-user-input">
-                    <label class="mdl-textfield__label" for="add-auth-user">Notifier ID</label>
+                  <div class="auth-link">
+                    Link: <span class="link"></span>
                   </div>
                   <span class="mdl-dialog__actions">
                     <button type="button" class="mdl-button close" id="close">Close</button>
-                    <!-- Accent-colored raised button with ripple -->
-                    <button class="auth-user-add-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                      Add
+                    <button class="update-link-btn mdl-button mdl-js-button mdl-js-ripple-effect">
+                      Update Link
                     </button>
                   </span>
 

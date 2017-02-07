@@ -4,10 +4,16 @@
     display: block;
     margin: 8px auto;
   }
-
   #close {
     position: absolute;
     top: 0;
     right: 0;
+  }
+}
+
+#authorize-user-dialog {
+  width: 400px;
+  .update-link-btn {
+    width: 100%;
   }
 }

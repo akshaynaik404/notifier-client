@@ -26,3 +26,17 @@ $('body')
 			});
 		}
 	});
+
+$('.update-link-btn').click(function (e) {
+	e.preventDefault();
+	$.ajax({
+		url: '/server/org_home.php',
+		data: {
+			update_auth_link: '',
+		},
+		type: 'POST'
+	}).done(function (link) {
+		link = $.trim(link);
+		$('.auth-link').html(`http://notifier.esy.es/auth.php?org=${link}`).fadeIn();
+	});
+});
