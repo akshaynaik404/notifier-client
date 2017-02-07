@@ -18,7 +18,7 @@ let $msgList = $('.inbox-container .message-list');
 _render();
 
 export function addMsg(msg) {
-	msgs.push(msg);
+	msgs.unshift(msg);
 	_render();
 }
 
@@ -34,7 +34,7 @@ $.ajax({
 	},
 	type: 'POST'
 }).done(function (recievedMails) {
-	console.log(recievedMails);
+	// console.log(recievedMails);
 	try {
 		recievedMails = JSON.parse(recievedMails);
 		recievedMails.forEach(function (mail) {
