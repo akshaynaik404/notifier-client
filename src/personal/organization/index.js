@@ -12,7 +12,10 @@ import {
 // console.log('load-orgs.js loaded');
 // load organizations
 
-let orgs = [];
+let orgs = {
+	admin: [],
+	auth: []
+};
 let $orgList = $('.organizations-container .org-list');
 _render();
 
@@ -23,13 +26,17 @@ _render();
 // 	}
 // }
 
-export function addOrg(org) {
-	orgs.push(org);
+export function addOrg(orgNotifierId, type) {
+	if (type === 'Admin') {
+		orgs.admin.push(orgNotifierId);
+	} else if (type === 'Auth-access') {
+		orgs.auth.push(orgNotifierId);
+	}
 	_render();
 }
 
 function _render() {
-	$orgList.html(getOrgsTmplStr(orgs, 'Admin'));
+	$orgList.html(getOrgsTmplStr(orgs));
 }
 $.ajax({
 	url: '/server/personal_home.php',
@@ -42,7 +49,7 @@ $.ajax({
 	try {
 		orgs = JSON.parse(orgs);
 		orgs.forEach(function (org) {
-			addOrg(org);
+			addOrg(org, 'Admin');
 		})
 	} catch (e) {
 		console.log('Parse error');
@@ -58,11 +65,12 @@ $.ajax({
 	// console.log(orgs);
 	try {
 		orgs = JSON.parse(orgs);
+		orgs.forEach(function (org) {
+			addOrg(org, 'Auth-access');
+		});
 	} catch (e) {
 		console.log('Parse error');
 	}
-	$('.organizations-container .org-list').append(getOrgsTmplStr(orgs,
-		'Auth-access'));
 });
 
 $('.organizations-container .org-list').on('click', '.org-notifier-id',

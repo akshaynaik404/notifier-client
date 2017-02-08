@@ -1,19 +1,22 @@
-function getOrgsTmplStr(organizations, type) {
+import {
+	getOrgTmplStr
+} from './org-template';
+
+function getOrgsTmplStr(organizations) {
 	let orgsTmplStr = '';
-	if (organizations.length > 0 && organizations) {
-		organizations.forEach(function (org) {
-			let orgStr =
-				`
-			<li class="mdl-list__item mdl-list__item--two-line org">
-			<span class="mdl-list__item-primary-content">
-			<i class="material-icons mdl-list__item-avatar">security</i>
-			<span class="org-notifier-id">${org}</span>
-			<span class="mdl-list__item-sub-title">${type}</span>
-			</span>
-			</li>`;
-			orgsTmplStr = orgsTmplStr + orgStr;
+	let adminOrgs = organizations.admin;
+	let authOrgs = organizations.auth;
+	if (adminOrgs.length > 0 || authOrgs.length > 0) {
+		let adminTmplStr = '';
+		adminOrgs.forEach(function (org) {
+			adminTmplStr = adminTmplStr + getOrgTmplStr(org, 'Admin');
 		});
-		return orgsTmplStr;
+
+		let authTmplStr = '';
+		authOrgs.forEach(function (org) {
+			authTmplStr = authTmplStr + getOrgTmplStr(org, 'Auth-access');
+		})
+		return orgsTmplStr = adminTmplStr + authTmplStr;
 	}
 	return '<center>You Do not have any Organization Account<center>';
 }
