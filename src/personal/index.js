@@ -1,7 +1,6 @@
 import './app/layout.js';
 
 // import './remember';
-import './lib/material.min.js';
 import {
 	addMsgs
 } from './inbox/';

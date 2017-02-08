@@ -1,4 +1,3 @@
-import '../lib/material.scss';
 import './nav.scss';
 
 import './router.js';

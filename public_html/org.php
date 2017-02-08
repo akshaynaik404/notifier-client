@@ -21,6 +21,7 @@
     <meta name="msapplication-TileColor" content="#3372DF">
 
     <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="stylesheet" href="./material.min.css">
 
   </head>
 
@@ -198,6 +199,7 @@
     </div>
     </div>
 
+    <script src="./material.min.js" charset="utf-8"></script>
     <script src="./org.js" charset="utf-8"></script>
   </body>
 
