@@ -48,6 +48,8 @@
                  if (is_admin_access($org_notifier_id, $notifier_id)) {
                      echo '  <a class="link-authorized mdl-navigation__link ">Authorized Users</a>';
                  }
+             } else {
+                 echo "<script>location.href='./index.html'</script>";
              }
               ?>
             <a class="logout-btn mdl-navigation__link">Logout</a>
