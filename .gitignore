@@ -3,3 +3,4 @@ public_html/org.js
 public_html/index.js
 node_modules/
 .git/
+server/
