@@ -135,25 +135,25 @@
         url: '/server/org_signup.php'
       }).done(function(data) {
         if($.trim(data) === '1') {
-          alert('organisation account created successfully.');
-          location.href = '/client/public_html/personal-app.html';
+          alert('Organisation account created successfully.');
+          location.href = './personal.html';
+        } else if($.trim(data) === '0'){
+          alert('Please login first.');
+          location.href = './index.html';
         } else {
-          console.log(data);
+          // console.log(data);
           try {
             data = JSON.parse(data);
+            for (var item in data) {
+              var $errorInput = $('#' + item);
+              var $errorInputContainer = $errorInput.parent();
+              //visually indicate error
+              $errorInputContainer.addClass('is-invalid');
+              //add error msg to error span
+              $errorInput.siblings('span').html(data[item]);
+            }
           } catch (e) {
             console.log(e);
-          }
-
-          // console.log(data);
-          for (var item in data) {
-            var $errorInput = $('#' + item);
-            var $errorInputContainer = $errorInput.parent();
-
-            //visually indicate error
-            $errorInputContainer.addClass('is-invalid');
-            //add error msg to error span
-            $errorInput.siblings('span').html(data[item]);
           }
         }
 
