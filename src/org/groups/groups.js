@@ -58,18 +58,8 @@ $createGroupDialog.find(".create-group-btn")
 						create_group: groupName
 					}
 				})
-				.done(function (data) {
-					if ($.trim(data) === '1') {
-						$spinner.hide();
-						$createGroupDialog.find(".spinner-wrapper .mdl-spinner")
-							.removeClass('is-active');
-						$createGroupDialog.find(".error")
-							.html("Group Created");
-						$spinnerWrapper.hide();
-						$clickedButton.disabled = false;
-						$("ul.groups-list")
-							.append(getGroupTmplStr(groupName));
-					} else if ($.trim(data) === '0') {
+				.done(function (link) {
+					if ($.trim(link) === '0') {
 						$spinner.hide();
 						$createGroupDialog.find(".error")
 							.html("Group Already Exists");
@@ -78,7 +68,16 @@ $createGroupDialog.find(".create-group-btn")
 						$spinnerWrapper.hide();
 						$clickedButton.disabled = false;
 					} else {
-						console.log(data);
+						console.log(link);
+						$spinner.hide();
+						$createGroupDialog.find(".spinner-wrapper .mdl-spinner")
+							.removeClass('is-active');
+						$createGroupDialog.find(".error")
+							.html("Group Created");
+						$spinnerWrapper.hide();
+						$clickedButton.disabled = false;
+						$("ul.groups-list")
+							.append(getGroupTmplStr(groupName, link));
 					}
 				})
 				.fail(function (a, b, c) {
