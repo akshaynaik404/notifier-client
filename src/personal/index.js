@@ -1,6 +1,6 @@
+import './app/remember.js';
 import './app/layout.js';
 
-// import './remember';
 import {
 	addMsgs
 } from './inbox/';
