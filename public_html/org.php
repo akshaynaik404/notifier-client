@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
+  <?php
+    if (!isset($_COOKIE['org_notifier_id'])) {
+        echo "<script>alert('Please login first');";
+        echo "location.href = './index.html';</script>";
+    }
+  ?>
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,18 +45,14 @@
             <!-- <a class="link-authorized mdl-navigation__link ">Authorized Users</a> -->
              <?php
              $root_dir = $_SERVER['DOCUMENT_ROOT'];
-             if (isset($_COOKIE['org_notifier_id'])) {
-                 include $root_dir.'server/database_functions/org_profile.php';
-                 $org_notifier_id = $_COOKIE['org_notifier_id'];
-                 session_start();
-                 $notifier_id = $_SESSION['notifier_id'];
-                 if (is_admin_access($org_notifier_id, $notifier_id)) {
-                     echo '  <a class="link-authorized mdl-navigation__link ">Authorized Users</a>';
-                 }
-             } else {
-                 echo "<script>location.href='./index.html'</script>";
+             session_start();
+             $org_notifier_id = $_COOKIE['org_notifier_id'];
+             $notifier_id = $_SESSION['notifier_id'];
+             include $root_dir.'server/database_functions/org_profile.php';
+             if (is_admin_access($org_notifier_id, $notifier_id)) {
+                 echo '  <a class="link-authorized mdl-navigation__link ">Authorized Users</a>';
              }
-              ?>
+            ?>
             <a class="logout-btn mdl-navigation__link">Logout</a>
           </nav>
         </div>
