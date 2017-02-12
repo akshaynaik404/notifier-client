@@ -37,6 +37,9 @@ $('.update-link-btn').click(function (e) {
 		type: 'POST'
 	}).done(function (link) {
 		link = $.trim(link);
-		$('.auth-link').html(`http://notifier.esy.es/auth.php?org=${link}`).fadeIn();
+		$('.auth-link')
+			.html(`http://notifier.esy.es/auth.php?org=${link}`)
+			.hide()
+			.fadeIn();
 	});
 });
