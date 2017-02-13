@@ -48,7 +48,7 @@
              session_start();
              $org_notifier_id = $_COOKIE['org_notifier_id'];
              $notifier_id = $_SESSION['notifier_id'];
-             include $root_dir.'server/database_functions/org_profile.php';
+             include $root_dir.'/server/database_functions/org_profile.php';
              if (is_admin_access($org_notifier_id, $notifier_id)) {
                  echo '  <a class="link-authorized mdl-navigation__link ">Authorized Users</a>';
              }
