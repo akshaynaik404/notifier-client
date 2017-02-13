@@ -1,4 +1,4 @@
-import $ from 'jQuery';
+// import $ from 'jQuery';
 
 $('body')
 	.on('click', '.auth-list a.auth-delete-btn', function (e) {

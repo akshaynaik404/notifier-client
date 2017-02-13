@@ -1,7 +1,7 @@
 import {
 	vars
 } from './vars';
-import $ from 'jQuery';
+// import $ from 'jQuery';
 
 $(function () {
 	vars.$personalSignupContainer.hide();

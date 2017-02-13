@@ -1,4 +1,4 @@
-import $ from 'jQuery';
+// import $ from 'jQuery';
 // console.log('router.js loaded');
 $(function () {
 	var $personalApp = $('.personal-app-container');

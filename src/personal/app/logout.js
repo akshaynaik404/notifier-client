@@ -1,4 +1,4 @@
-import $ from 'jQuery';
+// import $ from 'jQuery';
 
 $('a.logout-btn').click(function (e) {
 	e.preventDefault();

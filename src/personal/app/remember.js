@@ -1,4 +1,4 @@
-import $ from 'jQuery';
+// import $ from 'jQuery';
 $.ajax({
   type: 'POST',
   data: {

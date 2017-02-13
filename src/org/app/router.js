@@ -1,4 +1,4 @@
-import $ from 'jQuery';
+// import $ from 'jQuery';
 $( function () {
 	var $orgApp = $( '.org-app-container' );
 	hideAllExcept( "sent-container" );

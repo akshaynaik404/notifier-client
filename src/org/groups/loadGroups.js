@@ -1,4 +1,4 @@
-import $ from 'jQuery';
+// import $ from 'jQuery';
 import {
 	getGroupsTmplStr
 } from './groups-template';

@@ -1,4 +1,4 @@
-import $ from 'jQuery';
+// import $ from 'jQuery';
 
 import './groups.scss';
 import './group-overlay.scss';

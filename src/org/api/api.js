@@ -8,7 +8,7 @@ import {
 	sentMessages
 } from '../seed/sentMessages';
 
-import $ from 'jQuery';
+// import $ from 'jQuery';
 
 let serverUrl = '/server/';
 
