@@ -7,11 +7,11 @@ $(function () {
 	vars.$personalSignupContainer.find(".personal-signup-submit-btn").click(function (e) {
 		e.preventDefault();
 		let inputIds = ["#email", "#new-notifier-id", "#new-password", "#confirm-password"];
-		signUp(inputIds, vars.$personalSignupContainer, "personal_temp_signup");
+		signUp(inputIds, vars.$personalSignupContainer, "personal_temp_signup", this);
 	});
 });
 
-function signUp(inputIds, containerSelector, dataEndpointUrl) {
+function signUp(inputIds, containerSelector, dataEndpointUrl, $clickedBtn) {
   // Instead use jquery serialize
   let dataObj = (function(ids) {
     dataObj = {};
@@ -20,12 +20,21 @@ function signUp(inputIds, containerSelector, dataEndpointUrl) {
     });
     return dataObj;
   })(inputIds);
+	let $progressBar = vars.$personalSignupContainer.find('.mdl-progress');
+
+	// indicate signup loading
+	$progressBar.show();
+	$clickedBtn.disabled = true;
+
   $.ajax({
     type: "POST",
     data: dataObj,
     url: "/server/" + dataEndpointUrl + ".php"
   }).done(function(data) {
-    console.log(data);
+
+		$progressBar.hide();
+		$clickedBtn.disabled = false;
+
     if($.trim(data) === '1') {
       window.alert('Verification link sent, Please check your e-mail inbox/spam.');
     } else if($.trim(data) === '0') {
@@ -35,11 +44,8 @@ function signUp(inputIds, containerSelector, dataEndpointUrl) {
 			try {
 				data = JSON.parse(data);
 			} catch (e) {
-
-			} finally {
-
+				console.log(e);
 			}
-
 
       for (var item in data) {
         var $errorInput = $('#' + item);
