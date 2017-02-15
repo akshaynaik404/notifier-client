@@ -23,6 +23,7 @@
 
   <link rel="shortcut icon" href="logo.png">
   <link rel="stylesheet" href="./material.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <style>
     body {
       height: 100vh;
@@ -115,7 +116,10 @@
     </div>
   </div>
   <script src="./material.min.js"></script>
-  <script src="./jquery.min.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
   <script type="text/javascript">
     var $orgSignup = $('.organization-signup-container');
     $orgSignup.find('.signup-submit-btn').on('click', function (e) {
