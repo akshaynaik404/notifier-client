@@ -21,7 +21,7 @@
   <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
   <meta name="msapplication-TileColor" content="#3372DF">
 
-  <link rel="shortcut icon" href="images/favicon.png">
+  <link rel="shortcut icon" href="logo.png">
   <link rel="stylesheet" href="./material.min.css">
   <style>
     body {
