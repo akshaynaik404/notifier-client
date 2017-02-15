@@ -2,6 +2,7 @@ function getRecievedMailsStr(recievedMails) {
 	let recievedMailsStr = '';
 	if (recievedMails && recievedMails.length > 0) {
 		recievedMails.forEach(function (message) {
+			console.log(message);
 			let msgTemplate =
 				`<li class="mdl-card mdl-shadow--2dp message">
       <div class="mdl-card__title">
@@ -9,6 +10,16 @@ function getRecievedMailsStr(recievedMails) {
       <span class="org">${message.sender.parent}</span>
       <span>:</span>
       <span class="personal">${message.sender.child}</span>
+      </div>
+			<div class="mdl-card__title-text from">
+      <span class="org">Date</span>
+      <span>:</span>
+      <span class="personal">${message.date}</span>
+      </div>
+			<div class="mdl-card__title-text from">
+      <span class="org">Time</span>
+      <span>:</span>
+      <span class="personal">${message.time}</span>
       </div>
       <div class="mdl-card__title-text subject">${message.subject}</div>
       </div>
