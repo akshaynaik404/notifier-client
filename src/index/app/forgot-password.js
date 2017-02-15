@@ -15,8 +15,7 @@ vars.$forgotPasswordContainer.find('.forgot-password-submit-btn').on('click', fu
   }).done(function (data) {
     // console.log(data);
     if ($.trim(data) === "1") {
-      vars.$forgotPasswordContainer.hide();
-      $recoverySuccess.fadeIn();
+      vars.$recoverySuccess.fadeIn();
     } else if($.trim(data) === "0"){
       vars.$forgotPasswordContainer.find('.mdl-textfield').addClass('is-invalid');
     } else {
