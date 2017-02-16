@@ -101,6 +101,7 @@ function handleDeleteGroupMember(e) {
 	// console.log(grpName, memberNotifierId);
 
 	if (confirmDelete) {
+		$clickedButton.find('i').html('autorenew');
 		$.ajax({
 			url: '/server/org_group.php',
 			data: {
@@ -109,7 +110,7 @@ function handleDeleteGroupMember(e) {
 			},
 			type: 'POST'
 		}).done(function (data) {
-			console.log(data);
+			// console.log(data);
 			$clickedButton.parents('.member')
 				.slideUp()
 				.remove();
@@ -130,6 +131,7 @@ function handleDeleteGroup(e) {
 
 	let confirmDelete = confirm('Confirm Deletion of Group ' + grpName);
 	if (confirmDelete && grpName) {
+		$clickedButton.find('i').html('autorenew');
 		$.ajax({
 			url: '/server/org_group.php',
 			data: {
@@ -143,8 +145,10 @@ function handleDeleteGroup(e) {
 					.remove();
 			} else if (data === '0') {
 				console.log('db error');
+				$clickedButton.find('i').html('delete');
 			} else {
 				console.log('server error');
+				$clickedButton.find('i').html('delete');
 			}
 		});
 	}

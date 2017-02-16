@@ -17,8 +17,9 @@ $('body')
 		let msgId = $(this).attr('data-notification-id');
 		let confirmDelete = confirm('Confirm Delete');
 		let $deleteBtn = $(this);
+		console.log($deleteBtn);
 		if (confirmDelete) {
-
+			$deleteBtn.find('i').html('autorenew');
 			$.ajax({
 				url: '/server/message.php',
 				data: {
@@ -28,13 +29,13 @@ $('body')
 				},
 				type: 'POST'
 			}).done(function (data) {
-				console.log(data);
 				try {
 					data = JSON.parse(data);
+					deleteMsg(msgId, $deleteBtn);
 				} catch (e) {
 					console.log('Parse error');
+					$deleteBtn.find('i').html('delete');
 				}
-				deleteMsg(msgId, $deleteBtn);
 			});
 		}
 	});
@@ -42,12 +43,17 @@ $('body')
 function deleteMsg(msgId, $msgSelector) {
 	$msgSelector.parents('.message').remove();
 }
+
+/**
+ * delete message from inside overlay
+ */
 $('body').on('click', '.message-overlay-container .delete', function (e) {
 	let $deleteBtn = $(this);
 	let msgId = $deleteBtn.data('notification-id');
-	console.log(msgId);
+	// console.log(msgId);
 	let confirmDelete = confirm('Confirm Delete ?');
 	if (confirmDelete) {
+		$deleteBtn.find('i').html('autorenew');
 		$.ajax({
 			url: '/server/message.php',
 			data: {
@@ -57,7 +63,8 @@ $('body').on('click', '.message-overlay-container .delete', function (e) {
 			},
 			type: 'POST'
 		}).done(function (data) {
-			console.log(data);
+			// console.log(data);
+			$deleteBtn.find('i').html('delete');
 			try {
 				data = JSON.parse(data);
 				let $msgSelector = $(
