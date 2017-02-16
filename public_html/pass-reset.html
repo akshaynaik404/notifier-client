@@ -17,13 +17,19 @@
       align-items: center;
     }
     .pass-reset-submit {
-      text-align: right;
-      padding-right: 20px;
+      text-align: center;
       margin-bottom: 20px;
-      letter-spacing: 10px;
+      padding: 0 16px;
     }
     .pass-reset-submit a {
       letter-spacing: 1.5px;
+      width: 100%;
+      padding: 0;
+    }
+    @media (max-width: 320px) {
+      .mdl-card {
+        box-shadow: none;
+      }
     }
   </style>
 </head>
