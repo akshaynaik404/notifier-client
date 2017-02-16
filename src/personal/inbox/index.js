@@ -49,10 +49,14 @@ $.ajax({
 $('body').on('click', '.inbox-container .message button.delete', function () {
 	// console.log('clicked delete btn');
 	let $clickedBtn = $(this);
-	let msgId = $(this).attr('data-message-id');
+	console.log($clickedBtn);
+	let msgId = $clickedBtn.attr('data-message-id');
 	let confirmDelete = confirm('Confirm Deletion');
 
 	if (confirmDelete) {
+		// show deleting state
+		$clickedBtn.find('i').html('autorenew');
+
 		$.ajax({
 			url: '/server/message.php',
 			data: {
@@ -62,11 +66,13 @@ $('body').on('click', '.inbox-container .message button.delete', function () {
 			},
 			type: 'POST'
 		}).done(function (data) {
+			// show request complete state
+			$clickedBtn.find('i').html('delete');
 			data = $.trim(data);
 			if (data === '1') {
 				msgs.forEach(function (msg) {
 					if (msg.id === msgId) {
-						$clickedBtn.parents('.message').remove();
+						$clickedBtn.parents('.message').fadeOut().remove();
 					}
 				});
 			} else if (data === '0') {

@@ -63,10 +63,11 @@ $connectionsList.on('click', '.delete', function (e) {
 	let orgNotifierId = $(this).attr('data-org-notifier-id');
 	let confirmDelete = confirm('Confirm Deletion of ' + grpName);
 	// console.log(grpName, orgNotifierId, confirmDelete);
-
-	// 		// start spinner
-	// 		$('.connection-list .mdl-spinner').toggleClass('is-active');
 	if (confirmDelete) {
+
+		// show deleting state
+		$clickedBtn.find('i').html('autorenew');
+
 		$.ajax({
 			url: '/server/personal_connection.php',
 			data: {
@@ -75,6 +76,8 @@ $connectionsList.on('click', '.delete', function (e) {
 			},
 			type: 'POST'
 		}).done(function (data) {
+			// show request completed state
+			$clickedBtn.find('i').html('delete');
 			data = $.trim(data);
 			if (data === '1') {
 				// $clickedBtn.parents('li').remove();

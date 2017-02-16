@@ -77,8 +77,14 @@ $('.organizations-container .org-list').on('click', '.org-notifier-id',
 	function (e) {
 		let orgNotifierId = this.innerHTML;
 		let accessType = $(this).siblings('span')[0].innerHTML;
+
+		let $clickedBtn = $(this);
+		console.log($clickedBtn);
+		// show clicked and loading state
+		$clickedBtn.siblings('i').html('autorenew');
+
 		if (accessType === 'Admin') {
-			console.log('Admin org');
+			// console.log('Admin org');
 			$.ajax({
 				url: '/server/org_auth_access.php',
 				data: {
@@ -91,7 +97,7 @@ $('.organizations-container .org-list').on('click', '.org-notifier-id',
 				}
 			});
 		} else if (accessType === 'Auth-access') {
-			console.log('auth org');
+			// console.log('auth org');
 			$.ajax({
 				url: '/server/org_auth_access.php',
 				data: {
@@ -99,7 +105,7 @@ $('.organizations-container .org-list').on('click', '.org-notifier-id',
 				},
 				type: 'POST'
 			}).done(function (res) {
-				console.log(res);
+				// console.log(res);
 				if ($.trim(res) === '1') {
 					location.href = './org.php';
 				}
