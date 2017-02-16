@@ -26,7 +26,27 @@ $(function () {
 				"password": password
 			}
 		}).done(function (data) {
-			vars.$loginContainer.find(".response").hide().fadeIn().html(data);
+			data = $.trim(data);
+			switch (data) {
+			case '0':
+				vars.$loginContainer
+					.find(".response")
+					.hide()
+					.fadeIn()
+					.html('Wrong username or password');
+				break;
+			case 'connection':
+				location.href = './connection.php';
+				break;
+			case 'auth':
+				location.href = './auth.php';
+				break;
+			case 'personal':
+				location.href = './personal.html';
+				break;
+			default:
+				alert('Server Error');
+			}
 
 			// indicate successfull response
 			$progressBar.hide();
