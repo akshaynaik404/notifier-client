@@ -4,6 +4,8 @@
     if (!isset($_COOKIE['org_notifier_id'])) {
         echo "<script>alert('Please login first');";
         echo "location.href = './index.html';</script>";
+    } else {
+        session_start();
     }
   ?>
   <head>
@@ -25,14 +27,113 @@
     <meta name="msapplication-TileImage" content="notifierlogo.png">
     <meta name="msapplication-TileColor" content="#3372DF">
 
-    <link rel="shortcut icon" href="logo.png">
-    <link rel="stylesheet" href="./material.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
   </head>
 
   <body>
-    <div class="org-app-container">
+    <div class="loader-container">
+      <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+      </svg>
+    </div>
+    <style>
+    .loader-container {
+      margin: 0;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .loader-container .spinner {
+      -webkit-animation: rotator 1.4s linear infinite;
+      animation: rotator 1.4s linear infinite;
+    }
+    @-webkit-keyframes rotator {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg);
+      }
+    }
+
+    @keyframes rotator {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg);
+      }
+    }
+    .loader-container .path {
+      stroke-dasharray: 187;
+      stroke-dashoffset: 0;
+      -webkit-transform-origin: center;
+      transform-origin: center;
+      -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+      animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+    }
+    @-webkit-keyframes colors {
+      0% {
+        stroke: #3f51b5;
+      }
+      100% {
+        stroke: #4285F4;
+      }
+    }
+    @keyframes colors {
+      0% {
+        stroke: #3f51b5;
+      }
+      100% {
+        stroke: #4285F4;
+      }
+    }
+    @-webkit-keyframes dash {
+      0% {
+        stroke-dashoffset: 187;
+      }
+      50% {
+        stroke-dashoffset: 46.75;
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg);
+      }
+      100% {
+        stroke-dashoffset: 187;
+        -webkit-transform: rotate(450deg);
+        transform: rotate(450deg);
+      }
+    }
+    @keyframes dash {
+      0% {
+        stroke-dashoffset: 187;
+      }
+      50% {
+        stroke-dashoffset: 46.75;
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg);
+      }
+      100% {
+        stroke-dashoffset: 187;
+        -webkit-transform: rotate(450deg);
+        transform: rotate(450deg);
+      }
+    }
+    </style>
+    <script type="text/javascript">
+      let bodySelector = document.getElementsByTagName('body')[0];
+      let loaderSelector = document.querySelector('.loader-container');
+      window.onload = function() {
+        let orgAppContainer = document.querySelector('.org-app-container');
+        orgAppContainer.style.display = 'block';
+        loaderSelector.style.display = 'none';
+      }
+    </script>
+    <div class="org-app-container" style="display: none">
       <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             mdl-layout--fixed-header">
         <header class="mdl-layout__header">
@@ -46,7 +147,6 @@
             <!-- <a class="link-authorized mdl-navigation__link ">Authorized Users</a> -->
              <?php
              $root_dir = $_SERVER['DOCUMENT_ROOT'];
-             session_start();
              $org_notifier_id = $_COOKIE['org_notifier_id'];
              $notifier_id = $_SESSION['notifier_id'];
              include $root_dir.'/server/database_functions/org_profile.php';
@@ -175,8 +275,7 @@
                 </div>
               </dialog>
             </div>
-            <div>
-              <script type="text/javascript">
+            <script type="text/javascript">
                 function dialogs(buttonElementSelector, dialogElementSelector) {
                   'use strict';
                   var dialogButton = document.querySelector(buttonElementSelector);
@@ -196,12 +295,14 @@
                 dialogs('.compose-btn', '#compose-box-dialog');
                 dialogs('.authorize-user-btn', '#authorize-user-dialog');
                 dialogs('.create-group-btn', '#create-group-dialog');
-              </script>
-            </div>
+            </script>
           </div>
         </main>
+      </div>
     </div>
-    </div>
+    <link rel="shortcut icon" href="logo.png">
+    <link rel="stylesheet" href="./material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script
       src="https://code.jquery.com/jquery-3.1.1.min.js"
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="

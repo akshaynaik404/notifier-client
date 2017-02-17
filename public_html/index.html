@@ -7,14 +7,120 @@
     <meta name="description" content="A spam free mail system.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Notifier</title>
-
-    <link rel="stylesheet" href="./material.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="shortcut icon" href="logo.png">
   </head>
 
   <body>
-    <div class="index-container">
+    <div class="loader-container">
+      <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+      </svg>
+    </div>
+    <style>
+      .loader-container {
+        margin: 0;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .loader-container .spinner {
+        -webkit-animation: rotator 1.4s linear infinite;
+        animation: rotator 1.4s linear infinite;
+      }
+      
+      @-webkit-keyframes rotator {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+        }
+      }
+
+      @keyframes rotator {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+        }
+      }
+
+      .loader-container .path {
+        stroke-dasharray: 187;
+        stroke-dashoffset: 0;
+        -webkit-transform-origin: center;
+        transform-origin: center;
+        -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+        animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+      }
+
+      @-webkit-keyframes colors {
+        0% {
+          stroke: #3f51b5;
+        }
+        100% {
+          stroke: #4285F4;
+        }
+      }
+
+      @keyframes colors {
+        0% {
+          stroke: #3f51b5;
+        }
+        100% {
+          stroke: #4285F4;
+        }
+      }
+
+      @-webkit-keyframes dash {
+        0% {
+          stroke-dashoffset: 187;
+        }
+        50% {
+          stroke-dashoffset: 46.75;
+          -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+        }
+        100% {
+          stroke-dashoffset: 187;
+          -webkit-transform: rotate(450deg);
+          transform: rotate(450deg);
+        }
+      }
+
+      @keyframes dash {
+        0% {
+          stroke-dashoffset: 187;
+        }
+        50% {
+          stroke-dashoffset: 46.75;
+          -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+        }
+        100% {
+          stroke-dashoffset: 187;
+          -webkit-transform: rotate(450deg);
+          transform: rotate(450deg);
+        }
+      }
+    </style>
+    <script type="text/javascript">
+      let bodySelector = document.getElementsByTagName('body')[0];
+      let loaderSelector = document.querySelector('.loader-container');
+      window.onload = function() {
+        console.log('window has loaded')
+        let indexContainer = document.querySelector('.index-container');
+        indexContainer.style.display = 'block';
+        loaderSelector.style.display = 'none';
+      }
+    </script>
+    <div class="index-container" style="display: none">
       <div class="login-container">
         <div class="mdl-card">
           <div class="mdl-card__title mdl-card--expand">
@@ -46,8 +152,10 @@
       <div class="personal-signup-container">
         <div class="mdl-card">
           <div class="mdl-card__title mdl-card--expand">
-              <a class="arrow-back back-to-login"><i class="material-icons">arrow_back</i></a>
-              <h4 class="mdl-card__title-text">Sign Up</h4>
+            <a class="arrow-back back-to-login">
+              <i class="material-icons">arrow_back</i>
+            </a>
+            <h4 class="mdl-card__title-text">Sign Up</h4>
           </div>
           <div class="mdl-card__supporting-text">
             <form action="#">
@@ -85,8 +193,10 @@
       <div class="forgot-password-container">
         <div class="mdl-card">
           <div class="mdl-card__title mdl-card--expand">
-              <a class="arrow-back back-to-login"><i class="material-icons">arrow_back</i></a>
-              <h4 class="mdl-card__title-text">Password Recovery</h4>
+            <a class="arrow-back back-to-login">
+              <i class="material-icons">arrow_back</i>
+            </a>
+            <h4 class="mdl-card__title-text">Password Recovery</h4>
           </div>
           <!-- Password Recovery Success Message -->
           <div class="recovery-success">
@@ -109,10 +219,10 @@
         </div>
       </div>
     </div>
-    <script
-    src="https://code.jquery.com/jquery-3.1.1.min.js"
-    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-    crossorigin="anonymous">
+    <link rel="stylesheet" href="./material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="shortcut icon" href="logo.png">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous">
     </script>
     <script src="./material.min.js" charset="utf-8"></script>
     <script src="./index.js" charset="utf-8"></script>
