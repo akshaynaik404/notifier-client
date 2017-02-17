@@ -44,6 +44,9 @@ $(function () {
 			case 'personal':
 				location.href = './personal.html';
 				break;
+			case 'org-signup':
+				location.href = './org-signup.php';
+				break;
 			default:
 				alert('Server Error');
 			}
