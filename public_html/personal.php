@@ -172,7 +172,7 @@
             <a class="link-inbox mdl-navigation__link active">Inbox</a>
             <a class="link-connections mdl-navigation__link">Connections</a>
             <a class="link-change mdl-navigation__link ">Change Password</a>
-            <a class="mdl-navigation__link" href="./new-push.html">Notifications</a>
+            <a class="mdl-navigation__link" href="./push.html">Notifications</a>
              <?php
                $notifier_id = $_SESSION['notifier_id'];
 
