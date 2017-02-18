@@ -91,8 +91,6 @@ $composeBox.find(".btn-send")
 				try {
 					msgObj = JSON.parse(data);
 					msgObj['to'] = $recipients.length;
-					msgObj['subject'] = subject;
-					msgObj['body'] = message;
 					$clickedBtn.disabled = false;
 					addMsg(msgObj);
 				} catch (e) {
