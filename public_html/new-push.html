@@ -1,20 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="shortcut icon" href="logo.png">
-  <title>Notifier</title>
 
-</head>
-<body>
-  <h1>Click on icon below to get notifications.</h1>
-  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
-  <script src="onesignal-init.js"></script>
-  <script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="logo.png">
+    <title>Notifier</title>
+
+  </head>
+
+  <body>
+    <a href="#" id="subscribe-link" style="display: none;">Subscribe to Notifications</a>
+    <a href="#" id="unsubscribe-link" style="display: none;">Un-subscribe from Notifications</a>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script>
+      var OneSignal = window.OneSignal || [];
+      var appId = "66f4ac3c-5360-4957-b5ef-e0ec3cc8f156";
+      OneSignal.push(["init", {
+        appId: appId,
+        autoRegister: true,
+        /* Set to true to automatically prompt visitors */
+        subdomainName: 'notifier1234',
+        httpPermissionRequest: {
+          enable: true
+        },
+        notifyButton: {
+          enable: false
+        }
+      }]);
+
+      function subscribe() {
+        OneSignal.push(["setSubscription", true]);
+        event.preventDefault();
+      }
+
+
+      function unsubscribe() {
+        OneSignal.push(["setSubscription", false]);
+        event.preventDefault();
+      }
+      /* This example assumes you've already initialized OneSignal */
+      OneSignal.push(function() {
+        // If we're on an unsupported browser, do nothing
+        if (!OneSignal.isPushNotificationsSupported()) {
+          return;
+        }
+
+        document.getElementById("unsubscribe-link").addEventListener('click',
+          unsubscribe);
+        document.getElementById("subscribe-link").addEventListener('click',
+          subscribe);
+        OneSignal.isPushNotificationsEnabled(function(isEnabled) {
+          if (isEnabled) {
+            document.getElementById("unsubscribe-link").style.display = 'block';
+          } else {
+            document.getElementById("subscribe-link").style.display = 'block';
+          }
+        });
+
+        // Occurs when the user's subscription changes to a new value.
+        OneSignal.on('subscriptionChange', function(isSubscribed) {
+          if (isSubscribed) {
+            alert('User is subscribed');
+            document.getElementById("unsubscribe-link").style.display = 'block';
+            document.getElementById("subscribe-link").style.display = 'none';
+            OneSignal.getUserId(function(userId) {
+              // console.log("OneSignal User ID:", userId);
+              $.ajax({
+                url: '/server/player_id.php',
+                type: 'POST',
+                data: {
+                  player_id: userId
+                }
+              }).done(function(data) {
+                // console.log('player id sent successfully', data);
+                if (data === '0') {
+                  location.href = './connection.php';
+                } else if (data === '1') {
+                  location.href = './auth.php';
+                } else {
+                  location.href = './personal.php';
+                }
+              }).fail(function(event, jqxhr, settings, thrownError) {
+                console.log(event + jqxhr.status + settings + thrownError);
+              });
+
+            });
+          } else {
+            alert('unsubscribed');
+            document.getElementById("unsubscribe-link").style.display = 'none';
+            document.getElementById("subscribe-link").style.display = 'block';
+          }
+        });
+
+      });
+    </script>
+  </body>
 </html>
