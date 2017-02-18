@@ -204,12 +204,12 @@
             <div class="message-overlay-container">
             </div>
             <div class="group-overlay-container">
+              <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary back-btn">
+                <i class="material-icons">arrow_back</i>
+              </button>
               <div class="mdl-list members">
 
               </div>
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary back-btn">
-                Back
-              </button>
             </div>
             <div class="sent-container">
               <ul class="mdl-list message-list"></ul>
