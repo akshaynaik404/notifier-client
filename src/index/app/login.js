@@ -42,7 +42,7 @@ $(function () {
 				location.href = './auth.php';
 				break;
 			case 'personal':
-				location.href = './personal.html';
+				location.href = './personal.php';
 				break;
 			case 'org-signup':
 				location.href = './org-signup.php';

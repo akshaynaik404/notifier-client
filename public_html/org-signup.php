@@ -92,7 +92,7 @@
       <div class="mdl-card__title mdl-card--expand">
         <h4 class="mdl-card__title-text">
           <div class="back-button">
-            <a class="arrow-back" href='./personal.html'><i class="material-icons">arrow_back</i></a>
+            <a class="arrow-back" href='./personal.php'><i class="material-icons">arrow_back</i></a>
           </div>
           Notifier - Org Sign Up
         </h4>
@@ -140,7 +140,7 @@
       }).done(function(data) {
         if($.trim(data) === '1') {
           alert('Organisation account created successfully.');
-          location.href = './personal.html';
+          location.href = './personal.php';
         } else if($.trim(data) === '0'){
           alert('Please login first.');
           location.href = './index.html';
