@@ -10,7 +10,7 @@ $('a.logout-btn').click(function (e) {
 		type: 'POST'
 	}).done(function (res) {
 		if ($.trim(res) === '1') {
-			location.href = './personal.html';
+			location.href = './personal.php';
 		} else {
 			alert('Error');
 		}

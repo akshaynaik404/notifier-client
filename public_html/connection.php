@@ -81,14 +81,14 @@ function is_login()
         // for duplication of groups
         if (group_duplication($orgname, $groupname, $notifier_id)) {
             echo '<script>alert("connection already exists")</script>';
-            echo '<script>location.href="./personal.html";</script>';
+            echo '<script>location.href="./personal.php";</script>';
         } else {
             //echo "not exists";
           if (group_add($orgname, $groupname, $notifier_id)) {
               //echo "successfully added";
             echo '<script>alert("Connection Added. Go to connection tab")</script>';
             //redirect
-            echo '<script>location.href="./personal.html";</script>';
+            echo '<script>location.href="./personal.php";</script>';
           } else {
               echo 'error';
           }
@@ -111,14 +111,14 @@ function is_login()
                  //echo "exists";
 
               echo '<script>alert("Connection already exists")</script>';
-                 echo '<script>location.href="./personal.html";</script>';
+                 echo '<script>location.href="./personal.php";</script>';
              } else {
                  //echo "not exists";
               if (group_add($orgname, $groupname, $notifier_id)) {
                   //echo "successfully added";
                 echo '<script>alert("Connection added. Go to Connection tab")</script>';
                 //redirect
-                echo '<script>location.href="./personal.html";</script>';
+                echo '<script>location.href="./personal.php";</script>';
               } else {
                   echo 'error';
               }

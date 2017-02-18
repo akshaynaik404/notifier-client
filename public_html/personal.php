@@ -1,3 +1,32 @@
+<?php
+  session_start();
+  function is_auth_access($notifier_id)
+  {
+      $root_dir = $_SERVER['DOCUMENT_ROOT'];
+      include $root_dir.'/server/connect.php';
+      $query = "select * from org_profile where admin = '$notifier_id'";
+      $result = mysqli_query($dbc, $query);
+      if ($row = mysqli_num_rows($result) > 0) {
+          return true;
+      } else {
+          return false;
+      }
+  }
+
+  function is_admin_access($notifier_id)
+  {
+      $root_dir = $_SERVER['DOCUMENT_ROOT'];
+      include $root_dir.'/server/connect.php';
+      $query = "select * from auth_access where personal_notifier_id = '$notifier_id'";
+      $result = mysqli_query($dbc, $query);
+      if ($row = mysqli_num_rows($result) > 0) {
+          return true;
+      } else {
+          return false;
+      }
+  }
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -143,7 +172,15 @@
             <a class="link-inbox mdl-navigation__link active">Inbox</a>
             <a class="link-connections mdl-navigation__link">Connections</a>
             <a class="link-change mdl-navigation__link ">Change Password</a>
-            <a class="link-organizations mdl-navigation__link ">Organization</a>
+
+             <?php
+             $notifier_id = $_SESSION['notifier_id'];
+
+             if (is_auth_access($notifier_id) || is_admin_access($notifier_id)) {
+                 echo '<a class="link-organizations mdl-navigation__link ">Organization</a>';
+             }
+
+              ?>
             <a class="logout-btn mdl-navigation__link">Logout</a>
           </nav>
         </div>
