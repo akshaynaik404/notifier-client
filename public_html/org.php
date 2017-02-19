@@ -3,7 +3,7 @@
   <?php
     if (!isset($_COOKIE['org_notifier_id'])) {
         echo "<script>alert('Please login first');";
-        echo "location.href = './index.html';</script>";
+        echo "location.href = './personal.php';</script>";
     } else {
         session_start();
     }
@@ -163,6 +163,7 @@
               <dialog id="compose-box-dialog" class="mdl-dialog compose-box">
 
                 <h1 class="mdl-dialog__title compose-box-title">Compose</h1>
+                <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
                 <div class="compose-error">Please add Recipients</div>
                 <div class="mdl-dialog__content" id="dialog-content">
                   <!-- Floating Multiline Textfield -->

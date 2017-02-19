@@ -76,7 +76,8 @@ $composeBox.find(".btn-send")
 					",";
 			});
 			recipientsList = recipientsList.slice(0, -1);
-
+			let $progressBar = $composeBox.find('.mdl-progress');
+			$progressBar.show();
 			// send message
 			$.ajax({
 				url: '/server/message.php',
@@ -87,6 +88,7 @@ $composeBox.find(".btn-send")
 				},
 				type: 'POST'
 			}).done(function (data) {
+				$progressBar.hide();
 				let msgObj;
 				try {
 					msgObj = JSON.parse(data);
