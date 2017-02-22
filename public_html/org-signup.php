@@ -40,6 +40,7 @@
           Notifier - Org Sign Up
         </h4>
       </div>
+      <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="display: none"></div>
       <div class="mdl-card__supporting-text">
         <form action="#">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -72,7 +73,8 @@
       var orgName = $orgName.val();
       var orgNotifierid = $orgNotifierid.val();
       // console.log(orgName, orgUsername);
-
+      let $progressBar = $orgSignup.find('.mdl-progress');
+      $progressBar.show();
       $.ajax({
         type: 'POST',
         data: {
@@ -81,6 +83,7 @@
         },
         url: '/server/org_signup.php'
       }).done(function(data) {
+        $progressBar.hide();
         if($.trim(data) === '1') {
           alert('Organisation account created successfully.');
           location.href = './personal.php';
