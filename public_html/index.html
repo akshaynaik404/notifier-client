@@ -16,99 +16,7 @@
       </svg>
     </div>
     <style>
-      .loader-container {
-        margin: 0;
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .loader-container .spinner {
-        -webkit-animation: rotator 1.4s linear infinite;
-        animation: rotator 1.4s linear infinite;
-      }
-      
-      @-webkit-keyframes rotator {
-        0% {
-          -webkit-transform: rotate(0deg);
-          transform: rotate(0deg);
-        }
-        100% {
-          -webkit-transform: rotate(270deg);
-          transform: rotate(270deg);
-        }
-      }
-
-      @keyframes rotator {
-        0% {
-          -webkit-transform: rotate(0deg);
-          transform: rotate(0deg);
-        }
-        100% {
-          -webkit-transform: rotate(270deg);
-          transform: rotate(270deg);
-        }
-      }
-
-      .loader-container .path {
-        stroke-dasharray: 187;
-        stroke-dashoffset: 0;
-        -webkit-transform-origin: center;
-        transform-origin: center;
-        -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
-        animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
-      }
-
-      @-webkit-keyframes colors {
-        0% {
-          stroke: #3f51b5;
-        }
-        100% {
-          stroke: #4285F4;
-        }
-      }
-
-      @keyframes colors {
-        0% {
-          stroke: #3f51b5;
-        }
-        100% {
-          stroke: #4285F4;
-        }
-      }
-
-      @-webkit-keyframes dash {
-        0% {
-          stroke-dashoffset: 187;
-        }
-        50% {
-          stroke-dashoffset: 46.75;
-          -webkit-transform: rotate(135deg);
-          transform: rotate(135deg);
-        }
-        100% {
-          stroke-dashoffset: 187;
-          -webkit-transform: rotate(450deg);
-          transform: rotate(450deg);
-        }
-      }
-
-      @keyframes dash {
-        0% {
-          stroke-dashoffset: 187;
-        }
-        50% {
-          stroke-dashoffset: 46.75;
-          -webkit-transform: rotate(135deg);
-          transform: rotate(135deg);
-        }
-        100% {
-          stroke-dashoffset: 187;
-          -webkit-transform: rotate(450deg);
-          transform: rotate(450deg);
-        }
-      }
+      .loader-container{margin:0;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center}.loader-container .spinner{-webkit-animation:rotator 1.4s linear infinite;animation:rotator 1.4s linear infinite}@-webkit-keyframes rotator{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(270deg);transform:rotate(270deg)}}@keyframes rotator{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(270deg);transform:rotate(270deg)}}.loader-container .path{stroke-dasharray:187;stroke-dashoffset:0;-webkit-transform-origin:center;transform-origin:center;-webkit-animation:dash 1.4s ease-in-out infinite,colors 5.6s ease-in-out infinite;animation:dash 1.4s ease-in-out infinite,colors 5.6s ease-in-out infinite}@-webkit-keyframes colors{0%{stroke:#3f51b5}100%{stroke:#4285f4}}@keyframes colors{0%{stroke:#3f51b5}100%{stroke:#4285f4}}@-webkit-keyframes dash{0%{stroke-dashoffset:187}50%{stroke-dashoffset:46.75;-webkit-transform:rotate(135deg);transform:rotate(135deg)}100%{stroke-dashoffset:187;-webkit-transform:rotate(450deg);transform:rotate(450deg)}}@keyframes dash{0%{stroke-dashoffset:187}50%{stroke-dashoffset:46.75;-webkit-transform:rotate(135deg);transform:rotate(135deg)}100%{stroke-dashoffset:187;-webkit-transform:rotate(450deg);transform:rotate(450deg)}}
     </style>
     <script type="text/javascript">
       let bodySelector = document.getElementsByTagName('body')[0];
@@ -175,9 +83,9 @@
                 <span class="mdl-textfield__error">Passwords do not match</span>
               </div>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="email" id="email">
-                <label class="mdl-textfield__label" for="email">Email ID for verification</label>
-                <span class="mdl-textfield__error">Invalid Email ID</span>
+                <input class="mdl-textfield__input" type="number" id="mobile_no">
+                <label class="mdl-textfield__label" for="mobile_no">Mobile number for verification</label>
+                <span class="mdl-textfield__error">Mobile number</span>
               </div>
               <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="display: none"></div>
             </form>
@@ -200,13 +108,13 @@
           </div>
           <!-- Password Recovery Success Message -->
           <div class="recovery-success">
-            <span>Recovery Link Sent Successfully. <br /> Please check your email.</span>
+            <span>Recovery otp Sent Successfully. <br /> Please check your mobile phone.</span>
           </div>
           <div class="mdl-card__supporting-text">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="email">
-              <label class="mdl-textfield__label" for="email">Email</label>
-              <span class="mdl-textfield__error">E-mail id not found.</span>
+              <input class="mdl-textfield__input" type="text" id="mobile_no">
+              <label class="mdl-textfield__label" for="mobile_no">Mobile number</label>
+              <span class="mdl-textfield__error">Mobile number not found.</span>
             </div>
             <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="display: none"></div>
           </div>
