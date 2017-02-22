@@ -38,7 +38,7 @@ $('.update-link-btn').click(function (e) {
 	}).done(function (link) {
 		link = $.trim(link);
 		$('.auth-link')
-			.html(`http://notifier.esy.es/auth.php?org=${link}`)
+			.html(`https://www.notifier.website/auth.php?org=${link}`)
 			.hide()
 			.fadeIn();
 	});

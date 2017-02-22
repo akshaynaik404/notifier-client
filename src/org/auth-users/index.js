@@ -47,5 +47,5 @@ $.ajax({
 	type: 'POST'
 }).done(function (link) {
 	link = $.trim(link);
-	$('.auth-link').html(`http://notifier.esy.es/auth.php?org=${link}`);
+	$('.auth-link').html(`https://www.notifier.website/auth.php?org=${link}`);
 });
