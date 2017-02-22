@@ -5,69 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="logo.png">
     <title>Notifier</title>
-
+    <link rel="manifest" href="/manifest.json">
+    <style>
+      .loader-container{margin:0;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center;flex-direction:column;}.loader-container .spinner{-webkit-animation:rotator 1.4s linear infinite;animation:rotator 1.4s linear infinite}@-webkit-keyframes "rotator"{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(270deg);transform:rotate(270deg);}}@keyframes "rotator"{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(270deg);transform:rotate(270deg);}}.loader-container .path{stroke-dasharray:187;stroke-dashoffset:0;-webkit-transform-origin:center;transform-origin:center;-webkit-animation:dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;animation:dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite}@-webkit-keyframes "colors"{0%{stroke:#3f51b5;}100%{stroke:#4285F4;}}@keyframes "colors"{0%{stroke:#3f51b5;}100%{stroke:#4285F4;}}@-webkit-keyframes "dash"{0%{stroke-dashoffset:187;}50%{stroke-dashoffset:46.75;-webkit-transform:rotate(135deg);transform:rotate(135deg);}100%{stroke-dashoffset:187;-webkit-transform:rotate(450deg);transform:rotate(450deg);}}@keyframes "dash"{0%{stroke-dashoffset:187;}50%{stroke-dashoffset:46.75;-webkit-transform:rotate(135deg);transform:rotate(135deg);}100%{stroke-dashoffset:187;-webkit-transform:rotate(450deg);transform:rotate(450deg);}}
+    </style>
   </head>
-
   <body>
-    <a href="#" id="subscribe-link" style="display: none;">Subscribe to Notifications</a>
-    <a href="#" id="unsubscribe-link" style="display: none;">Un-subscribe from Notifications</a>
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
+
+    <h2><center>Click on the <em>bell icon</em> below to enable notifications.</center></h2>
+    <div class="loader-container">
+      <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+      </svg>
+      <p>It may feel slow for the first time...</p>
+    </div>
+    <script type="text/javascript">
+      let bodySelector = document.getElementsByTagName('body')[0];
+      let loaderSelector = document.querySelector('.loader-container');
+      window.onload = function() {
+        console.log('window has loaded')
+        let personalAppContainer = document.querySelector('.personal-app-container');
+        loaderSelector.style.display = 'none';
+      }
+    </script>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script>
       var OneSignal = window.OneSignal || [];
-      var appId = "66f4ac3c-5360-4957-b5ef-e0ec3cc8f156";
       OneSignal.push(["init", {
-        appId: appId,
+        appId: "6827f183-998a-46e1-954d-f747e3f7a3bb",
         autoRegister: true,
-        /* Set to true to automatically prompt visitors */
-        subdomainName: 'notifier1234',
-        httpPermissionRequest: {
-          enable: true
-        },
         notifyButton: {
-          enable: false
+          enable: true /* Set to false to hide */
         }
       }]);
-
-      function subscribe() {
-        OneSignal.push(["setSubscription", true]);
-        event.preventDefault();
-      }
-
-
-      function unsubscribe() {
-        OneSignal.push(["setSubscription", false]);
-        event.preventDefault();
-      }
-      /* This example assumes you've already initialized OneSignal */
-      OneSignal.push(function() {
-        // If we're on an unsupported browser, do nothing
-        if (!OneSignal.isPushNotificationsSupported()) {
-          return;
-        }
-
-        document.getElementById("unsubscribe-link").addEventListener('click',
-          unsubscribe);
-        document.getElementById("subscribe-link").addEventListener('click',
-          subscribe);
-        OneSignal.isPushNotificationsEnabled(function(isEnabled) {
-          if (isEnabled) {
-            document.getElementById("unsubscribe-link").style.display = 'block';
-          } else {
-            document.getElementById("subscribe-link").style.display = 'block';
-          }
-        });
-
-        // Occurs when the user's subscription changes to a new value.
+      OneSignal.push(function () {
         OneSignal.on('subscriptionChange', function(isSubscribed) {
+          console.log('subscrition state changed', isSubscribed);
           if (isSubscribed) {
-            alert('User is subscribed');
-            document.getElementById("unsubscribe-link").style.display = 'block';
-            document.getElementById("subscribe-link").style.display = 'none';
+            alert('You are subscribed');
+            // document.getElementById("unsubscribe-link").style.display = 'block';
+            // document.getElementById("subscribe-link").style.display = 'none';
             OneSignal.getUserId(function(userId) {
-              // console.log("OneSignal User ID:", userId);
+              console.log("OneSignal User ID:", userId);
               $.ajax({
                 url: '/server/player_id.php',
                 type: 'POST',
@@ -75,7 +56,7 @@
                   player_id: userId
                 }
               }).done(function(data) {
-                // console.log('player id sent successfully', data);
+                console.log('player id sent successfully', data);
                 if (data === '0') {
                   location.href = './connection.php';
                 } else if (data === '1') {
@@ -89,13 +70,13 @@
 
             });
           } else {
-            alert('unsubscribed');
-            document.getElementById("unsubscribe-link").style.display = 'none';
-            document.getElementById("subscribe-link").style.display = 'block';
+            alert('You are unsubscribed');
+            // document.getElementById("unsubscribe-link").style.display = 'none';
+            // document.getElementById("subscribe-link").style.display = 'block';
           }
         });
-
       });
     </script>
   </body>
+
 </html>
