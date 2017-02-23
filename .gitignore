@@ -10,3 +10,4 @@ server/
 
 #files
 auth.php
+connection.php

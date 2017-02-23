@@ -74,7 +74,7 @@ function is_login()
              setcookie('orgname', $orgname);
              setcookie('groupname', $groupname);
         // write redirect code
-        echo '<script>alert("Please login first")</script>';
+        echo '<script>alert("Please login or sign up first")</script>';
              echo '<script>location.href="./index.html";</script>';
          } else {
              //echo "loged in";
