@@ -177,12 +177,13 @@
                 <div class="mdl-dialog__content" id="dialog-content">
                   <!-- Floating Multiline Textfield -->
                   <div class="error"></div>
-                  <div class="auth-link">
-                    Link: <span class="link"></span>
-                  </div>
+                  <input type="text" name="" value="" class="auth-link" id="auth-link"/>
                   <span class="mdl-dialog__actions">
                     <button type="button" class="mdl-button close" id="close">Close</button>
-                    <button class="update-link-btn mdl-button mdl-js-button mdl-js-ripple-effect">
+                    <button class="mdl-button mdl-js-button copy-btn" data-clipboard-target="#auth-link">
+                      <i class="material-icons">content_copy</i> Copy Link
+                    </button>
+                    <button class="update-link-btn mdl-button mdl-js-button">
                       Update Link
                     </button>
                   </span>
@@ -225,6 +226,24 @@
     </script>
     <script src="./material.min.js" charset="utf-8"></script>
     <script src="./org.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js"></script>
+    <script type="text/javascript">
+    var clipboard = new Clipboard('.copy-btn');
+
+    clipboard.on('success', function(e) {
+      // show success msg
+        alert('Link Copied');
+        // console.info('Action:', e.action);
+        // console.info('Text:', e.text);
+        // console.info('Trigger:', e.trigger);
+    });
+
+    clipboard.on('error', function(e) {
+        alert('Error. Please select and copy.');
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+    });
+    </script>
   </body>
 
 </html>

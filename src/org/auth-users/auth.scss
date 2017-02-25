@@ -4,16 +4,22 @@
     display: block;
     margin: 8px auto;
   }
+  #authorize-user-dialog {
+    // width: 400px;
+    input.auth-link {
+      display: block;
+      margin: 0 auto;
+    }
+    .update-link-btn {
+      width: 100%;
+    }
+    .copy-btn {
+      width: 100%;
+    }
+  }
   #close {
     position: absolute;
     top: 0;
     right: 0;
-  }
-}
-
-#authorize-user-dialog {
-  width: 400px;
-  .update-link-btn {
-    width: 100%;
   }
 }
