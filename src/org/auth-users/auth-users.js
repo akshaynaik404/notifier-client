@@ -37,9 +37,8 @@ $('.update-link-btn').click(function (e) {
 		type: 'POST'
 	}).done(function (link) {
 		link = $.trim(link);
-		$('.auth-link')
-			.html(`https://www.notifier.website/auth.php?org=${link}`)
-			.hide()
-			.fadeIn();
+		alert('Link Updated');
+		$('#authorize-user-dialog .auth-link')
+			.val(`https://www.notifier.website/auth.php?org=${link}`);
 	});
 });

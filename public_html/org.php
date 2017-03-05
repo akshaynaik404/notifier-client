@@ -36,93 +36,7 @@
       </svg>
     </div>
     <style>
-    .loader-container {
-      margin: 0;
-      height: 100vh;
-      width: 100vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .loader-container .spinner {
-      -webkit-animation: rotator 1.4s linear infinite;
-      animation: rotator 1.4s linear infinite;
-    }
-    @-webkit-keyframes rotator {
-      0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-      }
-      100% {
-        -webkit-transform: rotate(270deg);
-        transform: rotate(270deg);
-      }
-    }
-
-    @keyframes rotator {
-      0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-      }
-      100% {
-        -webkit-transform: rotate(270deg);
-        transform: rotate(270deg);
-      }
-    }
-    .loader-container .path {
-      stroke-dasharray: 187;
-      stroke-dashoffset: 0;
-      -webkit-transform-origin: center;
-      transform-origin: center;
-      -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
-      animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
-    }
-    @-webkit-keyframes colors {
-      0% {
-        stroke: #3f51b5;
-      }
-      100% {
-        stroke: #4285F4;
-      }
-    }
-    @keyframes colors {
-      0% {
-        stroke: #3f51b5;
-      }
-      100% {
-        stroke: #4285F4;
-      }
-    }
-    @-webkit-keyframes dash {
-      0% {
-        stroke-dashoffset: 187;
-      }
-      50% {
-        stroke-dashoffset: 46.75;
-        -webkit-transform: rotate(135deg);
-        transform: rotate(135deg);
-      }
-      100% {
-        stroke-dashoffset: 187;
-        -webkit-transform: rotate(450deg);
-        transform: rotate(450deg);
-      }
-    }
-    @keyframes dash {
-      0% {
-        stroke-dashoffset: 187;
-      }
-      50% {
-        stroke-dashoffset: 46.75;
-        -webkit-transform: rotate(135deg);
-        transform: rotate(135deg);
-      }
-      100% {
-        stroke-dashoffset: 187;
-        -webkit-transform: rotate(450deg);
-        transform: rotate(450deg);
-      }
-    }
+    .loader-container{margin:0;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center}.loader-container .spinner{-webkit-animation:rotator 1.4s linear infinite;animation:rotator 1.4s linear infinite}@-webkit-keyframes "rotator"{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(270deg);transform:rotate(270deg);}}@keyframes "rotator"{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(270deg);transform:rotate(270deg);}}.loader-container .path{stroke-dasharray:187;stroke-dashoffset:0;-webkit-transform-origin:center;transform-origin:center;-webkit-animation:dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;animation:dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite}@-webkit-keyframes "colors"{0%{stroke:#3f51b5;}100%{stroke:#4285F4;}}@keyframes "colors"{0%{stroke:#3f51b5;}100%{stroke:#4285F4;}}@-webkit-keyframes "dash"{0%{stroke-dashoffset:187;}50%{stroke-dashoffset:46.75;-webkit-transform:rotate(135deg);transform:rotate(135deg);}100%{stroke-dashoffset:187;-webkit-transform:rotate(450deg);transform:rotate(450deg);}}@keyframes "dash"{0%{stroke-dashoffset:187;}50%{stroke-dashoffset:46.75;-webkit-transform:rotate(135deg);transform:rotate(135deg);}100%{stroke-dashoffset:187;-webkit-transform:rotate(450deg);transform:rotate(450deg);}}
     </style>
     <script type="text/javascript">
       let bodySelector = document.getElementsByTagName('body')[0];
@@ -263,12 +177,13 @@
                 <div class="mdl-dialog__content" id="dialog-content">
                   <!-- Floating Multiline Textfield -->
                   <div class="error"></div>
-                  <div class="auth-link">
-                    Link: <span class="link"></span>
-                  </div>
+                  <input type="text" name="" value="" class="auth-link" id="auth-link"/>
                   <span class="mdl-dialog__actions">
                     <button type="button" class="mdl-button close" id="close">Close</button>
-                    <button class="update-link-btn mdl-button mdl-js-button mdl-js-ripple-effect">
+                    <button class="mdl-button mdl-js-button copy-btn" data-clipboard-target="#auth-link">
+                      <i class="material-icons">content_copy</i> Copy Link
+                    </button>
+                    <button class="update-link-btn mdl-button mdl-js-button">
                       Update Link
                     </button>
                   </span>
@@ -311,6 +226,24 @@
     </script>
     <script src="./material.min.js" charset="utf-8"></script>
     <script src="./org.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js"></script>
+    <script type="text/javascript">
+    var clipboard = new Clipboard('.copy-btn');
+
+    clipboard.on('success', function(e) {
+      // show success msg
+        alert('Link Copied');
+        // console.info('Action:', e.action);
+        // console.info('Text:', e.text);
+        // console.info('Trigger:', e.trigger);
+    });
+
+    clipboard.on('error', function(e) {
+        alert('Error. Please select and copy.');
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+    });
+    </script>
   </body>
 
 </html>

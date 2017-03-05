@@ -25,64 +25,7 @@
   <link rel="stylesheet" href="./material.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <style>
-    body {
-      height: 100vh;
-      width: 100vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    /*ORGANIZATION SIGNUP*/
-
-    .organization-signup-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .organization-signup-container .signup-submit {
-      margin-bottom: 20px;
-    }
-
-    .organization-signup-container .login-submit,
-    .organization-signup-container .signup-submit {
-      text-align: right;
-      padding-right: 50px;
-    }
-
-    .organization-signup-container .demo-card-square.mdl-card {
-      width: 400px;
-    }
-
-    .organization-signup-container form {
-      text-align: center;
-    }
-
-    .organization-signup-container .mdl-card__supporting-text {
-      width: auto;
-    }
-
-    .organization-signup-container .mdl-card__title {
-      justify-content: center;
-    }
-
-    .organization-signup-container .back-button {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    .organization-signup-container .arrow-back,
-    .organization-signup-container .back-to-login {
-      cursor: pointer;
-    }
-
-    .organization-signup-container .mdl-card__title-text {
-      margin: auto;
-      justify-content: center;
-      position: relative;
-      width: 100%;
-    }
+    body{height:100vh;width:100vw;display:flex;justify-content:center;align-items:center}.organization-signup-container{display:flex;justify-content:center;align-items:center}.organization-signup-container .signup-submit{margin-bottom:20px}.organization-signup-container .login-submit,.organization-signup-container .signup-submit{text-align:center;padding:0 50px}.signup-submit-btn{padding:0;width:100%}.organization-signup-container .demo-card-square.mdl-card{width:400px}.organization-signup-container form{text-align:center}.organization-signup-container .mdl-card__supporting-text{width:auto}.organization-signup-container .mdl-card__title{justify-content:center}.organization-signup-container .back-button{position:absolute;top:0;left:0}.organization-signup-container .arrow-back,.organization-signup-container .back-to-login{cursor:pointer}.organization-signup-container .mdl-card__title-text{margin:auto;justify-content:center;position:relative;width:100%}
   </style>
 </head>
 
@@ -97,6 +40,7 @@
           Notifier - Org Sign Up
         </h4>
       </div>
+      <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="display: none"></div>
       <div class="mdl-card__supporting-text">
         <form action="#">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -129,7 +73,8 @@
       var orgName = $orgName.val();
       var orgNotifierid = $orgNotifierid.val();
       // console.log(orgName, orgUsername);
-
+      let $progressBar = $orgSignup.find('.mdl-progress');
+      $progressBar.show();
       $.ajax({
         type: 'POST',
         data: {
@@ -138,6 +83,7 @@
         },
         url: '/server/org_signup.php'
       }).done(function(data) {
+        $progressBar.hide();
         if($.trim(data) === '1') {
           alert('Organisation account created successfully.');
           location.href = './personal.php';

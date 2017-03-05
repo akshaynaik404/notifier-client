@@ -47,5 +47,5 @@ $.ajax({
 	type: 'POST'
 }).done(function (link) {
 	link = $.trim(link);
-	$('.auth-link').html(`https://www.notifier.website/auth.php?org=${link}`);
+	$('.auth-link').val(`https://www.notifier.website/auth.php?org=${link}`);
 });

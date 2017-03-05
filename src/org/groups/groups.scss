@@ -23,8 +23,13 @@
 
 .groups-container {
   // spinner
-  .groups-list .group-name {
-    cursor: pointer;
+  .groups-list {
+    .group-name {
+      cursor: pointer;
+    }
+    .copy-input {
+      width: 120px;
+    }
   }
   .spinner-wrapper {
     display: none;
@@ -37,7 +42,7 @@
     right: 0;
   }
 
-  button {
+  button.create-group-btn {
     display: block;
     margin: 8px auto;
   }
