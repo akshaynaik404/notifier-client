@@ -2,6 +2,7 @@
 public_html/personal.js
 public_html/org.js
 public_html/index.js
+public_html/jquery.js
 node_modules/
 
 .git/
