@@ -48,7 +48,9 @@
     <!-- Tile icon for Win8 (144x144 + tile color) -->
     <meta name="msapplication-TileImage" content="notifierlogo.png">
     <meta name="msapplication-TileColor" content="#3372DF">
-
+    
+    <meta name="theme-color" content="#3f51b5">
+    <link rel="manifest" href="/manifest.json">
   </head>
 
   <body>

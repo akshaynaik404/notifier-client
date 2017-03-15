@@ -1,7 +1,26 @@
 {
-  "name": "notifier",
-  "short_name": "notifier",
-  "start_url": "/",
+  "short_name": "Notifier",
+  "name": "Notifier",
+  "icons": [
+    {
+      "src": "./logo.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "./logo.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "./logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "./personal.php",
+  "background_color": "#3f51b5",
+  "theme_color": "#3f51b5",
   "display": "standalone",
   "gcm_sender_id": "482941778795"
 }
