@@ -44,9 +44,7 @@ function signUp(inputIds, containerSelector, dataEndpointUrl, $clickedBtn) {
 		$clickedBtn.disabled = false;
 
 		if ($.trim(data) === '1') {
-			window.alert(
-				'Otp sent, Please check your mobile phone.');
-			location.href = './personal_otp_validation.html';
+			location.href = './server/personal_signup.php';
 		} else if ($.trim(data) === '0') {
 			window.alert('Unable to process request');
 		} else {
