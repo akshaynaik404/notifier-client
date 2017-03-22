@@ -4,6 +4,9 @@ import {
 	api
 } from '../api/api';
 
+import {
+	deleteMsg
+} from './';
 
 $('body').on('click', '.message-overlay-container .back-to-sent', function () {
 	$('.message-overlay-container').hide();
@@ -31,7 +34,7 @@ $('body')
 			}).done(function (data) {
 				try {
 					data = JSON.parse(data);
-					deleteMsg(msgId, $deleteBtn);
+					deleteMsg(msgId);
 				} catch (e) {
 					console.log('Parse error');
 					$deleteBtn.find('i').html('delete');
@@ -39,10 +42,6 @@ $('body')
 			});
 		}
 	});
-
-function deleteMsg(msgId, $msgSelector) {
-	$msgSelector.parents('.message').remove();
-}
 
 /**
  * delete message from inside overlay
