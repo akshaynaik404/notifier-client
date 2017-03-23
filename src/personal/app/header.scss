@@ -1,0 +1,15 @@
+.personal-app-container {
+  header {
+    justify-content: center;
+    align-items: center;
+
+    .page-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      i.material-icons {
+        font-size: 3em;
+      }
+    }
+  }
+}

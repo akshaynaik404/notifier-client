@@ -36,7 +36,7 @@
       </svg>
     </div>
     <style>
-    .loader-container{margin:0;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center}.loader-container .spinner{-webkit-animation:rotator 1.4s linear infinite;animation:rotator 1.4s linear infinite}@-webkit-keyframes "rotator"{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(270deg);transform:rotate(270deg);}}@keyframes "rotator"{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(270deg);transform:rotate(270deg);}}.loader-container .path{stroke-dasharray:187;stroke-dashoffset:0;-webkit-transform-origin:center;transform-origin:center;-webkit-animation:dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;animation:dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite}@-webkit-keyframes "colors"{0%{stroke:#3f51b5;}100%{stroke:#4285F4;}}@keyframes "colors"{0%{stroke:#3f51b5;}100%{stroke:#4285F4;}}@-webkit-keyframes "dash"{0%{stroke-dashoffset:187;}50%{stroke-dashoffset:46.75;-webkit-transform:rotate(135deg);transform:rotate(135deg);}100%{stroke-dashoffset:187;-webkit-transform:rotate(450deg);transform:rotate(450deg);}}@keyframes "dash"{0%{stroke-dashoffset:187;}50%{stroke-dashoffset:46.75;-webkit-transform:rotate(135deg);transform:rotate(135deg);}100%{stroke-dashoffset:187;-webkit-transform:rotate(450deg);transform:rotate(450deg);}}
+    .loader-container{margin:0;height:100vh;width:100vw;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center}.loader-container .spinner{-webkit-animation:rotator 1.4s linear infinite;animation:rotator 1.4s linear infinite}@-webkit-keyframes "rotator"{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(270deg);transform:rotate(270deg);}}@keyframes "rotator"{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg);}100%{-webkit-transform:rotate(270deg);transform:rotate(270deg);}}.loader-container .path{stroke-dasharray:187;stroke-dashoffset:0;-webkit-transform-origin:center;-ms-transform-origin:center;transform-origin:center;-webkit-animation:dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;animation:dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite}@-webkit-keyframes "colors"{0%{stroke:#3f51b5;}100%{stroke:#4285F4;}}@keyframes "colors"{0%{stroke:#3f51b5;}100%{stroke:#4285F4;}}@-webkit-keyframes "dash"{0%{stroke-dashoffset:187;}50%{stroke-dashoffset:46.75;-webkit-transform:rotate(135deg);transform:rotate(135deg);}100%{stroke-dashoffset:187;-webkit-transform:rotate(450deg);transform:rotate(450deg);}}@keyframes "dash"{0%{stroke-dashoffset:187;}50%{stroke-dashoffset:46.75;-webkit-transform:rotate(135deg);transform:rotate(135deg);}100%{stroke-dashoffset:187;-webkit-transform:rotate(450deg);transform:rotate(450deg);}}
     </style>
     <script type="text/javascript">
       let bodySelector = document.getElementsByTagName('body')[0];
@@ -51,6 +51,9 @@
       <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             mdl-layout--fixed-header">
         <header class="mdl-layout__header">
+          <div class="page-title"><i class="material-icons">account_balance</i>
+            <?php echo $_COOKIE['org_notifier_id']; ?>
+          </div>
         </header>
         <div class="mdl-layout__drawer">
           <span class="mdl-layout-title">Notifier</span>
