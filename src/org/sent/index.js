@@ -18,6 +18,9 @@ export function addMsg(msg) {
 	msgs.unshift(msg);
 	render();
 }
+export function getMsgs() {
+	return msgs;
+}
 
 function render() {
 	$('.sent-container .message-list')
@@ -37,13 +40,14 @@ $.ajax({
 			addMsg(msg);
 		});
 	} catch (e) {
-		console.log('Parse error');
+		console.log('Parse error', e);
 	}
 });
 
 $('body').on('click', '.sent-container .message', function () {
 	let dataNotificationId = $(this).attr('data-notification-id');
 	msgs.forEach(function (message) {
+		// console.log(message);
 		if (message.id === dataNotificationId) {
 			// show message
 			$('.sent-container').hide();

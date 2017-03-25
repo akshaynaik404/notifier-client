@@ -1,8 +1,13 @@
+import {
+	getAttachmentsTmplStr
+} from './attachments-tmpl';
+
 function getRecievedMailsStr(recievedMails) {
 	let recievedMailsStr = '';
 	if (recievedMails && recievedMails.length > 0) {
 		recievedMails.forEach(function (message) {
-			console.log(message);
+			let attachmentsTmplStr = getAttachmentsTmplStr(message.attachments);
+			console.log(attachmentsTmplStr);
 			let msgTemplate =
 				`<li class="mdl-card mdl-shadow--2dp message">
       <div class="mdl-card__title">
@@ -23,7 +28,9 @@ function getRecievedMailsStr(recievedMails) {
       </div>
       <div class="mdl-card__title-text subject">${message.subject}</div>
       </div>
-      <div class="mdl-card__supporting-text">${message.body}</div>
+      <div class="mdl-card__supporting-text">${message.body}
+			${attachmentsTmplStr}
+			</div>
       <div class="mdl-card__actions">
       <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect delete" data-message-id='${message.id}'>
       <i class="material-icons">delete</i>
