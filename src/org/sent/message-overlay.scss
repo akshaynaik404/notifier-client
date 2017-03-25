@@ -4,7 +4,9 @@
 
   .message {
     margin: 0 auto 10px;
-
+    .attachments {
+      margin: 16px;
+    }
     .mdl-card__title {
       display: block;
       font-weight: normal;

@@ -3,6 +3,10 @@ public_html/personal.js
 public_html/org.js
 public_html/index.js
 public_html/jquery.js
+public_html/clipboard.min.js
+public_html/firebase-app.js
+public_html/firebase-storage.js
+
 node_modules/
 
 .git/

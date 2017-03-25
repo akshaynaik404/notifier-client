@@ -79,7 +79,6 @@
           <div class="page-content">
             <div class="compose-container-dialog">
               <dialog id="compose-box-dialog" class="mdl-dialog compose-box">
-
                 <h1 class="mdl-dialog__title compose-box-title">Compose</h1>
                 <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
                 <div class="compose-error">Please add Recipients</div>
@@ -105,7 +104,17 @@
                     <textarea class="mdl-textfield__input" type="text" rows="6" id="message"></textarea>
                     <label class="mdl-textfield__label" for="message">Message</label>
                   </div>
-
+                  <div class="file-inputs-wrapper">
+                    <div class="file-input-wrapper">
+            					<input class="file-input" type="file">
+            					<a href="#" class="file-link" download></a>
+            					<i
+            						class="material-icons close file-link"
+            						style="display: none; cursor: pointer;"
+            					>close</i>
+            					<i class="material-icons sync" style="display: none">sync</i>
+            				</div>
+                  </div>
                   <span class="mdl-dialog__actions">
                     <button type="button" class="mdl-button close" id="close">Close</button>
                     <!-- Accent-colored raised button with ripple -->
@@ -220,6 +229,9 @@
         </main>
       </div>
     </div>
+    <div class="message-sent" style="display: none">
+      Message Sent Successfully
+    </div>
     <link rel="shortcut icon" href="logo.png">
     <link rel="stylesheet" href="./material.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -229,6 +241,18 @@
       crossorigin="anonymous">
     </script>
     <script src="./material.min.js" charset="utf-8"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase-storage.js"></script>
+    <script type="text/javascript">
+      var config = {
+        apiKey: "AIzaSyBdrfwtY-n4Mls6HG9kHaR6-edVB0rPUtA",
+        authDomain: "push-test-61c13.firebaseapp.com",
+        databaseURL: "https://push-test-61c13.firebaseio.com",
+        storageBucket: "push-test-61c13.appspot.com",
+        messagingSenderId: "484988652373"
+      };
+    firebase.initializeApp(config);
+    </script>
     <script src="./org.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js"></script>
     <script type="text/javascript">

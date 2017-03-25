@@ -1,4 +1,10 @@
-export function getMsgOverlayTmplStr( clickedMessage ) {
+import {
+	getAttachmentsTmplStr
+} from './attachments-tmpl.js';
+
+export function getMsgOverlayTmplStr(clickedMessage) {
+	let attachmentsStr = getAttachmentsTmplStr(clickedMessage.attachments);
+	// console.log(attachmentsStr);
 	let msgOverlayStr =
 		`<li class="mdl-card mdl-shadow--2dp message">
     <div class="mdl-card__title">
@@ -21,6 +27,7 @@ export function getMsgOverlayTmplStr( clickedMessage ) {
       <div class="mdl-card__title-text subject">${clickedMessage.subject}</div>
     </div>
     <div class="mdl-card__supporting-text">${clickedMessage.body}</div>
+		<div class="attachments">${attachmentsStr}</div>
     <div class="mdl-card__actions">
       <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect back-to-sent">
         <i class="material-icons">arrow_back</i>
