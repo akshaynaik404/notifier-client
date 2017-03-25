@@ -18,6 +18,15 @@ export function addMsg(msg) {
 	msgs.unshift(msg);
 	render();
 }
+export function deleteMsg(msgId) {
+	msgs.forEach(function (msg) {
+		if (msg.id === msgId) {
+			msgs.splice(msgs.indexOf(msg), 1);
+			render();
+			return;
+		}
+	});
+}
 
 function render() {
 	$('.sent-container .message-list')
